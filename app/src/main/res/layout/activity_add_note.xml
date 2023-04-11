@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".addNote"
+    android:orientation="vertical"
+    android:layout_margin="16dp">
+
+    <Spinner
+        android:id="@+id/spinnerCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/editTitle"
+        android:layout_height="wrap_content"
+        android:hint="Title"
+        android:layout_below="@+id/spinnerCategory">
+
+    </EditText>
+    <EditText
+        android:id="@+id/editDescription"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Description"
+    android:layout_below="@+id/editTitle">
+
+</EditText>
+    <Button
+        android:id="@+id/add_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Note"
+        android:layout_alignParentBottom="true">
+
+    </Button>
+</RelativeLayout>
