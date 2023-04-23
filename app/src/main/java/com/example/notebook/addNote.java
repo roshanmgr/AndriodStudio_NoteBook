@@ -2,6 +2,7 @@ package com.example.notebook;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -51,8 +52,32 @@ public class addNote extends AppCompatActivity{
                     String title = editTitle.getText().toString();
                     String description = editDescription.getText().toString();
 
-                    Toast.makeText(addNote.this, "Title:"+title+",Description:"+description+" Note Category:"+noteCategory, Toast.LENGTH_SHORT).show();
+                    if (validate(title, description)) {
+                        Intent intent = new Intent();
+                        intent.putExtra("note_title", title);
+                        intent.putExtra("note_description", description);
+                        intent.putExtra("note_category", noteCategory);
+
+                        setResult(RESULT_OK,intent);
+                        finish();
+
+                    }else {
+                        Toast.makeText(addNote.this, "Validate data", Toast.LENGTH_SHORT).show();
+
+                    }
+
+
+
                 }
             });
     }
+
+    public boolean validate(String title,String description){
+        if (!title.isEmpty() && !description.isEmpty()){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
 }

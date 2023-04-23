@@ -18,6 +18,11 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewsHo
         this.notes = notes;
     }
 
+    public void addData(Note note){
+        notes.add(note);
+        notifyItemInserted(notes.size());
+    }
+
     @NonNull
     @Override
     public NotesViewsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
