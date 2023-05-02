@@ -1,8 +1,10 @@
 package com.example.notebook;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,6 +14,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.MaterialToolbar;
+
+import java.util.ArrayList;
+import java.util.Random;
+
 public class addNote extends AppCompatActivity{
 
     EditText editTitle, editDescription;
@@ -19,6 +26,9 @@ public class addNote extends AppCompatActivity{
     Spinner category;
     Button addNotes;
     String noteCategory;
+    RecyclerView rvColor;
+    MaterialToolbar toolbar;
+    Integer selectedColor= Color.WHITE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +39,27 @@ public class addNote extends AppCompatActivity{
         editDescription = findViewById(R.id.editDescription);
         category = findViewById(R.id.spinnerCategory);
         addNotes = findViewById(R.id.add_note);
+        rvColor = findViewById(R.id.color_list);
+        toolbar = findViewById(R.id.add_note_toolbar);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        ArrayList<Integer> colors = new ArrayList<Integer>();
+        for (int i =0; i<=50; i++){
+            Random random= new Random();
+            int color = Color.argb(255,random.nextInt(256),random.nextInt(256),random.nextInt(256));
+            colors.add(color);
+        }
+
+        NoteColorAdapter adapter= new NoteColorAdapter(colors, new NoteColorListener() {
+            @Override
+            public void onNoteColorClicked(int color) {
+                selectedColor = color;
+
+            }
+        });
+        rvColor.setAdapter(adapter);
 
         String[] items={"normal","urgent","important"};
         ArrayAdapter spinnerAdapter= new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item,items);
@@ -57,6 +88,7 @@ public class addNote extends AppCompatActivity{
                         intent.putExtra("note_title", title);
                         intent.putExtra("note_description", description);
                         intent.putExtra("note_category", noteCategory);
+                        intent.putExtra("note_color", selectedColor);
 
                         setResult(RESULT_OK,intent);
                         finish();

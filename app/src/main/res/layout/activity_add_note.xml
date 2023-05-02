@@ -4,39 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addNote"
+    android:layout_margin="16dp"
     android:orientation="vertical"
-    android:layout_margin="16dp">
+    tools:context=".addNote">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        app:title="ToolBar"
+        android:id="@+id/add_note_toolbar">
+
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <Spinner
         android:id="@+id/spinnerCategory"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_height="32dp"
+        android:layout_below="@+id/add_note_toolbar"
         />
 
     <EditText
-        android:layout_width="match_parent"
         android:id="@+id/editTitle"
+        android:fontFamily="@font/roboto_black"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/spinnerCategory"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/box_shape"
         android:hint="Title"
-        android:layout_below="@+id/spinnerCategory">
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:layout_marginBottom="16dp">
 
     </EditText>
+
     <EditText
         android:id="@+id/editDescription"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Description"
-    android:layout_below="@+id/editTitle">
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_below="@+id/editTitle"
+        android:background="@drawable/box_shape"
+        android:hint="Description"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp">
 
-</EditText>
+    </EditText>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/color_list"
+        android:layout_below="@+id/editDescription"
+        tools:listitem="@layout/item_note_color"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
     <Button
         android:id="@+id/add_note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Note"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:text="Add Note">
 
     </Button>
 </RelativeLayout>

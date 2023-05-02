@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_margin="20dp"
-    tools:context=".addNote" >
+    android:layout_margin="8dp"
+    tools:context=".addNote"
+    android:id="@+id/cardViewColor"
+    app:cardCornerRadius="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="@drawable/box_shape"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="16dp"
         >
 
         <TextView
@@ -20,7 +25,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:hint="Catogery"
-            android:paddingEnd="30dp">
+            android:paddingEnd="30dp"
+            android:textSize="16sp"
+            android:textStyle="italic">
 
         </TextView>
 
@@ -28,6 +35,8 @@
             android:id="@+id/display_note_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20sp"
             android:hint="Title"
             />
 
@@ -36,9 +45,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Description"
+            android:textSize="16sp"
             android:paddingLeft="30dp"/>
 
     </LinearLayout>
 
 
-</RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

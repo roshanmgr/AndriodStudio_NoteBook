@@ -7,6 +7,42 @@
     tools:context=".MainActivity"
     android:orientation="vertical"
     >
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="TooleBar"
+        android:id="@+id/toolbar"
+        >
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <LinearLayout
+        android:id="@+id/no_notes"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_file_not_found">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/no_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No Text found"
+            android:textSize="16dp"
+            android:textAlignment="center">
+
+        </TextView>
+
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -14,7 +50,9 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:id="@+id/recycle_notes"
         tools:listitem="@layout/activity_list_view"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_below="@+id/toolbar"
+        >
 
     </androidx.recyclerview.widget.RecyclerView>
 
